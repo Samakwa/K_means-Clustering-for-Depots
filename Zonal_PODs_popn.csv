@@ -1,4 +1,4 @@
-ID,LGA,address,lat,long,population
+ID,LGA,address,latitude,longitude,Popn
 0,UNTH,depot,6.3014,7.4619,0
 1,1,Agboechara Health Centre,6.067786,7.501858,22985
 2,1,Ndeaboh Health Centre,6.038358,7.564178,31021

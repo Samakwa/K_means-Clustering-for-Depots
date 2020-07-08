@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.cluster import MeanShift, KMeans
-from sklearn import preprocessing, cross_validation
+from sklearn import preprocessing
+#cross_validation
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -25,7 +26,7 @@ home.dest Home/Destination
 '''
 
 # https://pythonprogramming.net/static/downloads/machine-learning-data/titanic.xls
-df = pd.read_excel('titanic.xls')
+df = pd.read_csv('Zonal_PODs_popn.csv')
 
 original_df = pd.DataFrame.copy(df)
 df.drop(['body', 'name'], 1, inplace=True)
