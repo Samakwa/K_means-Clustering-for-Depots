@@ -9,24 +9,12 @@ import matplotlib.pyplot as plt
 #Meanshift applied to Titanic Dataset
 
 '''
-Pclass Passenger Class (1 = 1st; 2 = 2nd; 3 = 3rd)
-survival Survival (0 = No; 1 = Yes)
-name Name
-sex Sex
-age Age
-sibsp Number of Siblings/Spouses Aboard
-parch Number of Parents/Children Aboard
-ticket Ticket Number
-fare Passenger Fare (British pound)
-cabin Cabin
-embarked Port of Embarkation (C = Cherbourg; Q = Queenstown; S = Southampton)
-boat Lifeboat
-body Body Identification Number
-home.dest Home/Destination
+P
+kkkk
 '''
 
 # https://pythonprogramming.net/static/downloads/machine-learning-data/titanic.xls
-df = pd.read_csv('Zonal_PODs_popn.csv')
+df = pd.read_csv('Zonal_PODs_popn.csv', encoding='latin1')
 
 original_df = pd.DataFrame.copy(df)
 df.drop(['body', 'name'], 1, inplace=True)
