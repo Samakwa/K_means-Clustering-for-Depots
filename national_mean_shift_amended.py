@@ -14,10 +14,10 @@ kkkk
 '''
 
 # https://pythonprogramming.net/static/downloads/machine-learning-data/titanic.xls
-df = pd.read_csv('Zonal_PODs_popn.csv', encoding='latin1')
+df = pd.read_csv('National_data.csv', encoding='latin1')
 
 original_df = pd.DataFrame.copy(df)
-df.drop(['body', 'name'], 1, inplace=True)
+df.drop(['latitude', 'longitude'], 1, inplace=True)
 df.fillna(0, inplace=True)
 
 
@@ -52,8 +52,8 @@ def handle_non_numerical_data(df):
     return df
 
 
-df = handle_non_numerical_data(df)
-df.drop(['ticket', 'home.dest'], 1, inplace=True)
+#df = handle_non_numerical_data(df)
+#df.drop(['latitude', 'longitude'], 1, inplace=True)
 
 X = np.array(df.drop(['survived'], 1).astype(float))
 X = preprocessing.scale(X)
