@@ -7,16 +7,16 @@ import csv
 
 
 
-df = pd.read_csv('Enugu_PODs_Intial.csv', encoding='latin1')
-#df = pd.read_csv('EOCs_in_Nigeria_popn.csv', encoding='latin1')
+#df = pd.read_csv('Enugu_PODs_Intial.csv', encoding='latin1')
+df = pd.read_csv('National_data.csv', encoding='latin1')
 df.head(10)
 
 #print (df.head(10))
 
-K_clusters = range(1,11,2)
+K_clusters = range(1,37,2)
 kmeans = [KMeans(n_clusters=i) for i in K_clusters]
-Y_axis = df[['Latitude']]
-X_axis = df[['Longitude']]
+Y_axis = df[['latitude']]
+X_axis = df[['longitude']]
 score = [kmeans[i].fit(Y_axis).score(Y_axis) for i in range(len(kmeans))]
 # Visualize
 plt.plot(K_clusters, score)
@@ -27,7 +27,7 @@ plt.show()
 
 
 # Variable with the Longitude and Latitude
-X=df.loc[:,[ 'I.D','Latitude','Longitude']]
+X=df.loc[:,[ 'latitude','longitude']]
 X.head(10)
 #print (X.head(10))
 
@@ -39,7 +39,7 @@ labels = kmeans.predict(X[X.columns[1:3]]) # Labels of each point
 print(X.head)
 df = X.head()
 
-X.plot.scatter(x = 'Latitude', y= 'Longitude', c=labels, s=50, cmap='viridis')
+X.plot.scatter(x =  'latitude', y= 'longitude', c=labels, s=50, cmap='viridis')
 plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
 plt.show()
 
