@@ -6,16 +6,17 @@ from collections import Counter
 
 
 #This is a sample code from Kaggle
-#replace 'NaN' in regionidzip with 97000
-#drop rows with 'NaN' in latitude & longitude
 
-df = pd.read_csv('Zonal_PODs_popn.csv', encoding='latin1')
+
+#df = pd.read_csv('Zonal_PODs_popn.csv', encoding='latin1')
+df = pd.read_csv('National_data.csv', encoding='latin1')
 #df['regionidzip']=df['regionidzip'].fillna(97000)
 df.dropna(axis=0,how='any',subset=['latitude','longitude'],inplace=True)
 X=df.loc[:,['latitude','longitude']]
 zp=df.Popn
 #run KMeans
-id_n=8
+#id_n=8
+id_n=37
 kmeans = KMeans(n_clusters=id_n, random_state=0).fit(X)
 id_label=kmeans.labels_
 #plot result
