@@ -32,7 +32,7 @@ verified from the labelled scatter plot on the right.
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
-
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import numpy as np
@@ -42,6 +42,7 @@ print(__doc__)
 # Generating the sample data from make_blobs
 # This particular setting has one distinct cluster and 3 clusters placed close
 # together.
+
 X, y = make_blobs(n_samples=500,
                   n_features=2,
                   centers=4,
@@ -50,12 +51,19 @@ X, y = make_blobs(n_samples=500,
                   shuffle=True,
                   random_state=1)  # For reproducibility
 
-range_n_clusters = [2, 3, 4, 5, 6]
+
+df = pd.read_csv('Enugu_PODs_Intial.csv', encoding='latin1')
+#df.to_csv (r'Enugu_PODs_Intial.csv', index = False, header=True)
+range_n_clusters = [3,4, 5, 8, 9, 10]
+
+#Y = df[['Latitude']]
+#X = df[['Longitude']]
 
 for n_clusters in range_n_clusters:
     # Create a subplot with 1 row and 2 columns
     fig, (ax1, ax2) = plt.subplots(1, 2)
     fig.set_size_inches(18, 7)
+
 
     # The 1st subplot is the silhouette plot
     # The silhouette coefficient can range from -1, 1 but in this example all
@@ -65,7 +73,7 @@ for n_clusters in range_n_clusters:
     # plots of individual clusters, to demarcate them clearly.
     ax1.set_ylim([0, len(X) + (n_clusters + 1) * 10])
 
-    # Initialize the clusterer with n_clusters value and a random generator
+    # Initialize the k-meansw with n_clusters value and a random generator
     # seed of 10 for reproducibility.
     clusterer = KMeans(n_clusters=n_clusters, random_state=10)
     cluster_labels = clusterer.fit_predict(X)
@@ -132,7 +140,7 @@ for n_clusters in range_n_clusters:
     ax2.set_xlabel("Feature space for the 1st feature")
     ax2.set_ylabel("Feature space for the 2nd feature")
 
-    plt.suptitle(("Silhouette analysis for KMeans clustering on sample data "
+    plt.suptitle(("Silhouette analysis for KMeans clustering on regional data "
                   "with n_clusters = %d" % n_clusters),
                  fontsize=14, fontweight='bold')
 
