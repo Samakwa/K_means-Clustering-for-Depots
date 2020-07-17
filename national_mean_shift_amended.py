@@ -14,7 +14,7 @@ kkkk
 '''
 
 # https://pythonprogramming.net/static/downloads/machine-learning-data/titanic.xls
-df = pd.read_csv('National_data.csv', encoding='latin1')
+df = pd.read_csv('National_data2.csv', encoding='latin1')
 
 original_df = pd.DataFrame.copy(df)
 df.drop(['latitude', 'longitude'], 1, inplace=True)
@@ -55,8 +55,8 @@ def handle_non_numerical_data(df):
 #df = handle_non_numerical_data(df)
 #df.drop(['latitude', 'longitude'], 1, inplace=True)
 
-X = np.array(df.drop(['survived'], 1).astype(float))
-X = preprocessing.scale(X)
+#X = np.array(df.drop(['survived'], 1).astype(float))
+#X = preprocessing.scale(X)
 y = np.array(df['survived'])
 
 clf = MeanShift()

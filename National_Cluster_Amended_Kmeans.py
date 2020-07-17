@@ -9,8 +9,8 @@ from collections import Counter
 
 
 #df = pd.read_csv('Zonal_PODs_popn.csv', encoding='latin1')
-df = pd.read_csv('National_data.csv', encoding='latin1')
-#df['regionidzip']=df['regionidzip'].fillna(97000)
+df = pd.read_csv('National_data2.csv', encoding='latin1')
+
 df.dropna(axis=0,how='any',subset=['latitude','longitude'],inplace=True)
 X=df.loc[:,['latitude','longitude']]
 zp=df.Popn
@@ -20,15 +20,16 @@ id_n=37
 kmeans = KMeans(n_clusters=id_n, random_state=0).fit(X)
 id_label=kmeans.labels_
 #plot result
-ptsymb = np.array(['b.','r.','m.','g.','c.','k.','b*','r*','m*','r^']);
+ptsymb = np.array(['b.','r.','m.','g.','c.','k.','b*','r*','m*','r^'])
 plt.figure(figsize=(12,12))
 plt.ylabel('Longitude', fontsize=12)
 plt.xlabel('Latitude', fontsize=12)
+"""
 for i in range(id_n):
     cluster=np.where(id_label==i)[0]
     plt.plot(X.latitude[cluster].values,X.longitude[cluster].values,ptsymb[i])
 plt.show()
-
+"""
 #revise the clustering based on zipcode
 uniq_zp=np.unique(zp)
 for i in uniq_zp:
