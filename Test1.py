@@ -9,6 +9,9 @@ kmeans = cluster.KMeans(37)
 kmeans.fit(EOCs[['longitude', 'latitude']])
 labels = kmeans.labels_
 plt.scatter(EOCs['longitude'], EOCs['latitude'], c=labels)
+plt.ylabel('Longitude', fontsize=12)
+plt.xlabel('Latitude', fontsize=12)
+plt.title (" Initial Clusters ")
 plt.show()
 
 kmeans = cluster.KMeans(37)
@@ -17,6 +20,10 @@ labels = kmeans.labels_
 centroids = kmeans.cluster_centers_
 plt.scatter(EOCs['longitude'], EOCs['latitude'], c=labels)
 plt.scatter(centroids[:,0], centroids[:,1], marker='x', c='black')
+plt.ylabel('Longitude', fontsize=12)
+plt.xlabel('Latitude', fontsize=12)
+plt.title (" Optimised Clusters ")
+plt.show()
 plt.show()
 
 # K-means clustering based on population
