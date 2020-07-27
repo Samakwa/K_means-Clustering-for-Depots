@@ -4,9 +4,9 @@ import numpy as np
 from sklearn.cluster import MeanShift, estimate_bandwidth
 from sklearn.datasets import make_blobs
 import pandas as pd
-
+list1 =[]
 #Data
-df = pd.read_csv('Enugu_PODs_popn.csv', encoding='latin1')
+df = pd.read_csv('National_data2.csv', encoding='latin1')
 #centers = np.load('National_data2.csv', encoding='latin1')
 for index, row in df.iterrows():
     # print(row['longitude'], row['latitude'])
@@ -17,7 +17,7 @@ for index, row in df.iterrows():
     #demand1 =[]
     k.append(row['long'])
     k.append(row['lat'])
-    popn.append(row['population'])
+    #popn.append(row['population'])
     #k.append(row['id'])
     #k.append(row['address'])
     #k.append(row['city'])
@@ -28,7 +28,10 @@ for index, row in df.iterrows():
 
     list1.append((p))
 #centers = [[1, 1], [-1, -1], [1, -1]]
-X, _ = make_blobs(n_samples=10000, centers=centers, cluster_std=0.6)
+#centers = [[1, 1], [-1, -1], [1, -1]]
+
+#X, _ = make_blobs(n_samples=10000, centers=centers, cluster_std=0.6)
+X, _ = (list1[0], list1[1])
 
 # #############################################################################
 # Compute clustering with MeanShift
