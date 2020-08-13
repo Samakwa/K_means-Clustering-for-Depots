@@ -6,7 +6,8 @@ from sklearn.datasets import make_blobs
 import pandas as pd
 list1 =[]
 #Data
-df = pd.read_csv('National_data2.csv', encoding='latin1')
+#df = pd.read_csv('National_data2.csv', encoding='latin1')
+df = pd.read_csv('National_Demand_Points.csv', encoding='latin1')
 #centers = np.load('National_data2.csv', encoding='latin1')
 for index, row in df.iterrows():
     # print(row['longitude'], row['latitude'])
@@ -15,8 +16,8 @@ for index, row in df.iterrows():
     k = []
     cord = []
     #demand1 =[]
-    k.append(row['long'])
-    k.append(row['lat'])
+    k.append(row['longitude'])
+    k.append(row['latitude'])
     #popn.append(row['population'])
     #k.append(row['id'])
     #k.append(row['address'])

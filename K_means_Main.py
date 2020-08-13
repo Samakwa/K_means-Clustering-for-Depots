@@ -3,8 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import cluster
 
-f = open('National_data2.csv', encoding='latin1')
-EOCs = pd.read_csv(f)
+#f = open('National_data2.csv', encoding='latin1')
+dt = open('National_Demand_Points.csv', encoding='latin1')
+EOCs = pd.read_csv(dt)
 kmeans = cluster.KMeans(37)
 kmeans.fit(EOCs[['longitude', 'latitude']])
 labels = kmeans.labels_

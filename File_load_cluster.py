@@ -7,11 +7,12 @@ import csv
 
 
 
-#df = pd.read_csv('Enugu_PODs_Intial.csv', encoding='latin1')
-df = pd.read_csv('National_data.csv', encoding='latin1')
+
+#df = pd.read_csv('National_data.csv', encoding='latin1')
+df = pd.read_csv('National_Demand_Points.csv', encoding='latin1')
 df.head(10)
 
-#print (df.head(10))
+print (df.head(10))
 
 K_clusters = range(1,37,2)
 kmeans = [KMeans(n_clusters=i) for i in K_clusters]

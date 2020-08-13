@@ -13,8 +13,9 @@ P
 kkkk
 '''
 
-# https://pythonprogramming.net/static/downloads/machine-learning-data/titanic.xls
-df = pd.read_csv('National_data2.csv', encoding='latin1')
+
+#df = pd.read_csv('National_data2.csv', encoding='latin1')
+df = pd.read_csv('National_Demand_Points.csv', encoding='latin1')
 
 original_df = pd.DataFrame.copy(df)
 df.drop(['latitude', 'longitude'], 1, inplace=True)
@@ -39,12 +40,7 @@ def handle_non_numerical_data(df):
             unique_elements = set(column_contents)
             # great, found them.
             x = 0
-            for unique in unique_elements:
-                if unique not in text_digit_vals:
-                    # creating dict that contains new
-                    # id per unique string
-                    text_digit_vals[unique] = x
-                    x += 1
+
             # now we map the new "id" vlaue
             # to replace the string.
             df[column] = list(map(convert_to_int, df[column]))
@@ -60,11 +56,11 @@ def handle_non_numerical_data(df):
 y = np.array(df['survived'])
 
 clf = MeanShift()
-clf.fit(X)
+
 labels = clf.labels_
 cluster_centers = clf.cluster_centers_
 original_df['cluster_group']=np.nan
-for i in range(len(X)):
+for i in range(len(longitude)):
     original_df['cluster_group'].iloc[i] = labels[i]
     n_clusters_ = len(np.unique(labels))
     survival_rates = {}
